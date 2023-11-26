@@ -1,0 +1,8 @@
+{
+    "Email":{
+        "fromemail":"example@example.example",
+        "emailpass":"example",
+        "stmpServer":"smtp.gmail.com",
+        "smtpPort":587
+    }
+}

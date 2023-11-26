@@ -16,9 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import  static
 from home import views
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.home) # , name='HOME-view-home'
-]
+    path('', views.get_session, name='root'),  # , name='HOME-view-home'
+    path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup'),
+    path('home/', views.home, name='home'),
+    path('settings/', views.settings, name='settings'),
+    path('settings/patient/', views.home, name='set-home'),
+    path('setsession/', views.set_session, name='set-session')
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) +static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+print(f"{settings.BASE_DIR}{settings.STATIC_ROOT}")
